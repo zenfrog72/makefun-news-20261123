@@ -1,6 +1,6 @@
 # The World in One Day — Monday 23 November 2026
 
-A one-page news map for the make.fun **news-image-20261123** bounty: the
+A one-page news map for the make.fun [news-image-20261123](https://make.fun/bounty/news-image-20261123) bounty: the
 whole of Monday 23 November 2026 on a single 1024×1024 page.
 
 ![rank](https://make.fun/badge/news-image-20261123/zenfrog72/makefun-news-20261123/rank.svg)
