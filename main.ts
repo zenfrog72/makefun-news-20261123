@@ -5,7 +5,8 @@
 // byte-identically into the output directory as entry.png.
 
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
-import { join } from "node:path";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
 
 const MAX_BYTES = 1024 * 1024; // 1 MiB size gate
 const EXPECTED_WIDTH = 1024;
@@ -58,7 +59,13 @@ function collectProblems(sourcePath: string): {
 }
 
 function main(): void {
-  const { data, problems } = collectProblems(join(process.cwd(), "entry.png"));
+  // The grader may run this program from any working directory, so the
+  // source file is located relative to the program itself: MAKEFUN_BOT_DIR
+  // names the mounted repository when the grader sets it, and otherwise
+  // the directory holding this file is the repository root.
+  const sourceDir =
+    process.env.MAKEFUN_BOT_DIR ?? dirname(fileURLToPath(import.meta.url));
+  const { data, problems } = collectProblems(join(sourceDir, "entry.png"));
   if (data === null) {
     for (const problem of problems) {
       console.error(`entry check failed: ${problem}`);
