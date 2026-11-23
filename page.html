@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The World in One Day — Monday 23 November 2026</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body { width:1024px; height:1024px; }
+  body { background:#f6efdb; color:#141414; font-family: Arial, Helvetica, sans-serif;
+         -webkit-font-smoothing:antialiased; }
+  .page { width:1024px; height:1024px; padding:12px 14px 10px; border:3px solid #141414;
+          display:flex; flex-direction:column; background:#f6efdb; }
+  .serif { font-family: Georgia, 'Times New Roman', serif; }
+  /* kicker */
+  .kicker { display:flex; justify-content:space-between; align-items:baseline; height:17px;
+            font-size:10.5px; letter-spacing:1.6px; font-weight:bold; }
+  .kicker .r { color:#b01e24; letter-spacing:1.2px; }
+  /* masthead */
+  .mast { display:flex; height:82px; border-top:3px solid #141414; border-bottom:1.5px solid #141414;
+          margin-top:3px; }
+  .mast .title { flex:1; padding-top:7px; }
+  .mast h1 { font-family:Georgia,'Times New Roman',serif; font-size:55px; line-height:0.98; letter-spacing:-0.5px; }
+  .mast .edition { font-size:11px; letter-spacing:2.2px; font-weight:bold; margin-top:5px; }
+  .dateblock { width:86px; background:#b01e24; color:#fff; text-align:center; padding-top:8px; }
+  .dateblock .d1 { font-size:15px; font-weight:bold; letter-spacing:3px; }
+  .dateblock .d2 { font-family:Georgia,serif; font-size:40px; line-height:1; }
+  .dateblock .d3 { font-size:15px; font-weight:bold; letter-spacing:3px; }
+  /* sub-dek */
+  .subdek { height:20px; display:flex; align-items:center; font-family:Georgia,serif; font-style:italic;
+            color:#b01e24; font-size:14.5px; border-bottom:1.5px solid #141414; }
+  /* utc strip */
+  .utc { height:25px; display:flex; align-items:center; gap:8px; border-bottom:1px solid #141414;
+         font-size:11px; }
+  .utc .lab { background:#141414; color:#fff; font-weight:bold; letter-spacing:1.2px; padding:3px 7px; font-size:10.5px; }
+  .utc b { font-family:Georgia,serif; font-size:12.5px; }
+  .utc .sep { color:#b01e24; font-weight:bold; }
+  /* region bar */
+  .regions { height:20px; display:flex; border-bottom:2px solid #141414; }
+  .regions div { flex:1; color:#fff; font-size:9.5px; font-weight:bold; letter-spacing:0.8px;
+                 display:flex; align-items:center; justify-content:center; }
+  /* numbers strip */
+  .numbers { height:66px; display:flex; border-bottom:2px solid #141414; }
+  .numbers .lab { width:86px; background:#b01e24; color:#fff; font-weight:bold; font-size:12px;
+                  letter-spacing:1px; display:flex; align-items:center; justify-content:center; text-align:center; line-height:1.25; }
+  .numbers .stat { flex:1; padding:5px 8px 3px 12px; border-right:1px solid #c9bd97; }
+  .numbers .stat:last-child { border-right:none; }
+  .numbers .n { font-family:Georgia,serif; color:#b01e24; font-size:30px; line-height:1; }
+  .numbers .g { font-size:9.8px; line-height:1.28; margin-top:2px; color:#333; }
+  /* heroes */
+  .heroes { height:248px; display:flex; gap:8px; padding-top:8px; }
+  .hero { flex:1; border:1.5px solid #141414; background:#fdfaf0; display:flex; flex-direction:column; overflow:hidden; }
+  .hero .art { position:relative; height:114px; flex:none; overflow:hidden; }
+  .hero .hdr { position:absolute; top:0; left:0; right:0; background:#141414; color:#fff;
+               font-size:10.5px; font-weight:bold; letter-spacing:1.6px; padding:3px 8px; z-index:5; }
+  .hero .sub { background:#141414; color:#fff; font-size:9.6px; font-weight:bold; letter-spacing:0.7px;
+               padding:2px 5px; }
+  .tagrow { display:flex; align-items:center; gap:6px; padding:3px 8px 0; }
+  .num { width:19px; height:19px; color:#fff; font-weight:bold; font-size:12.5px; flex:none;
+         display:flex; align-items:center; justify-content:center; }
+  .tag { font-size:10px; font-weight:bold; letter-spacing:1.1px; }
+  .chip { margin-left:auto; font-size:8.5px; font-weight:bold; letter-spacing:0.8px; padding:2.5px 6px; color:#fff; flex:none; }
+  .CONFIRMED { background:#2e7d32; } .OFFICIAL { background:#2f5aa8; }
+  .REPORTED { background:#6b6b6b; } .CLAIM { background:#e07b24; }
+  .hero h2 { font-family:Georgia,serif; font-size:19.5px; line-height:1.04; padding:1px 8px 0; }
+  .hero .dek { font-size:10.6px; line-height:1.17; padding:1px 6px 0; color:#222; }
+  .src { font-size:8.3px; letter-spacing:0.9px; color:#6d6242; padding:2px 8px 2px; margin-top:auto; }
+  .dtag { position:absolute; font-weight:bold; color:#fff; padding:2.5px 7px; font-size:12.5px; z-index:4; letter-spacing:0.5px; }
+  /* smalls */
+  .smalls { display:flex; flex-direction:column; gap:7px; padding-top:7px; }
+  .srow { display:flex; gap:7px; height:128px; }
+  .small { flex:1; border:1.5px solid #141414; background:#fdfaf0; display:flex; flex-direction:column; overflow:hidden; }
+  .small .art { position:relative; height:56px; flex:none; overflow:hidden; }
+  .small .tagrow { padding:4px 6px 0; gap:5px; }
+  .small .num { width:16px; height:16px; font-size:11px; }
+  .small .tag { font-size:8.6px; letter-spacing:0.7px; }
+  .small .chip { font-size:7.3px; padding:2px 4px; }
+  .small h3 { font-family:Georgia,serif; font-size:12.6px; line-height:1.14; padding:2.5px 6px 4px; }
+  .small .src { font-size:8px; letter-spacing:0.6px; padding:0 6px 3px; }
+  .small .dtag { font-size:10.5px; padding:2px 5px; }
+  /* bottom */
+  .bottom { display:flex; gap:9px; padding-top:8px; height:176px; }
+  .mapbox { width:398px; flex:none; border:1.5px solid #141414; background:#18335c; position:relative; overflow:hidden; }
+  .mapbox .mhdr { position:absolute; top:0; left:0; right:0; background:#141414; color:#fff; z-index:6;
+                  font-size:9.5px; font-weight:bold; letter-spacing:1.2px; padding:3px 7px; }
+  .legend { position:absolute; left:0; right:0; bottom:0; background:#f6efdb; border-top:1px solid #141414;
+            font-size:8.2px; padding:2.5px 7px; z-index:6; line-height:1.35; }
+  .legend b { letter-spacing:0.4px; }
+  .alsobox { flex:1; border-top:2px solid #141414; }
+  .alsobox .ahdr { display:flex; align-items:baseline; gap:8px; padding:2px 0 3px; }
+  .alsobox .ahdr .t { font-family:Georgia,serif; font-size:16px; font-weight:bold; }
+  .alsobox .ahdr .s { font-size:9px; letter-spacing:1px; color:#6d6242; }
+  .also { display:flex; gap:14px; }
+  .acol { flex:1; }
+  .arow { display:flex; gap:5px; font-size:9.2px; line-height:1.22; padding:1.2px 0; border-bottom:0.5px dotted #c9bd97; }
+  .arow .num { width:14px; height:14px; font-size:9px; margin-top:0.5px; }
+  .arow b { letter-spacing:0.2px; }
+  /* date check + footer */
+  .datecheck { margin-top:6px; border:2px solid #b01e24; display:flex; height:47px; overflow:hidden; flex:none; }
+  .datecheck .stamp { background:#b01e24; color:#fff; font-weight:bold; font-size:11.5px; letter-spacing:1px;
+                      display:flex; align-items:center; justify-content:center; text-align:center; width:74px; flex:none; line-height:1.3; }
+  .datecheck .body { font-size:9.0px; line-height:1.34; padding:4px 8px; }
+  .datecheck b { color:#b01e24; }
+  .footer { display:flex; justify-content:space-between; font-size:8.6px; color:#6d6242; padding-top:5px; letter-spacing:0.5px; }
+  svg.flag { display:block; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="kicker"><span>THE WORLD IN ONE DAY · EVERY STORY FROM THIS DAY, IN ANY TIME ZONE</span><span class="r">31 STORIES · 9 REGIONS · 14 FIELDS</span></div>
+
+  <div class="mast">
+    <div class="title">
+      <h1>Monday 23 November 2026</h1>
+      <div class="edition">THE WORLD IN ONE DAY — DAILY NEWS MAP · ALL TIMES UTC</div>
+    </div>
+    <div class="dateblock"><div class="d1">MON</div><div class="d2">23</div><div class="d3">NOV</div></div>
+  </div>
+
+  <div class="subdek">A sixth tanker burns in Hormuz · COP31 ends with no deal at all · Belgium's skies fall silent</div>
+
+  <div class="utc">
+    <span class="lab">THE DAY IN UTC</span>
+    <span><b>02:40</b> Vanuatu M6.5 quake</span><span class="sep">·</span>
+    <span><b>06:00</b> Belgium's airspace shuts</span><span class="sep">·</span>
+    <span><b>06:00</b> Tanker struck in Hormuz</span><span class="sep">·</span>
+    <span><b>Night</b> Dymer search goes on</span><span class="sep">·</span>
+    <span><b>Night</b> Wellington: the Test is drawn</span>
+  </div>
+
+  <div class="regions">
+    <div style="background:#2f5aa8">EUROPE</div>
+    <div style="background:#8a7d1e">MID. EAST</div>
+    <div style="background:#e07b24">S. ASIA</div>
+    <div style="background:#c8102e">E. ASIA</div>
+    <div style="background:#43aa5b">SE ASIA</div>
+    <div style="background:#14632e">AFRICA</div>
+    <div style="background:#5b7fa6">N. AMERICA</div>
+    <div style="background:#6d28a8">LATIN AM.</div>
+    <div style="background:#0f766e">OCEANIA</div>
+  </div>
+
+  <div class="numbers">
+    <div class="lab">THE DAY<br>IN<br>NUMBERS</div>
+    <div class="stat"><div class="n">6</div><div class="g">tankers struck since Friday — the sixth hit leaving Hormuz on Monday</div></div>
+    <div class="stat"><div class="n">429</div><div class="g">flights cancelled at Brussels as the airspace shuts for the strike</div></div>
+    <div class="stat"><div class="n">190+</div><div class="g">countries at COP31 — and still no deal on fossil fuels</div></div>
+    <div class="stat"><div class="n">720</div><div class="g">India's total at Wellington, the highest Test score on NZ soil</div></div>
+    <div class="stat"><div class="n">9</div><div class="g">dead in Dymer; a boy of 7 was freed after 14 hours</div></div>
+  </div>
+
+  <div class="heroes">
+
+    <!-- HERO 1 · HORMUZ -->
+    <div class="hero">
+      <div class="art">
+        <svg width="100%" height="114" viewBox="0 0 324 114" preserveAspectRatio="none">
+          <!-- Iranian flag as the backdrop of the whole scene -->
+          <rect width="324" height="38" fill="#239f40"/>
+          <rect y="38" width="324" height="38" fill="#ffffff"/>
+          <rect y="76" width="324" height="38" fill="#da0000"/>
+          <!-- kufic ticks along the band borders -->
+          <g fill="#14532d"><rect x="4" y="26" width="10" height="2.4"/><rect x="31" y="26" width="10" height="2.4"/><rect x="58" y="26" width="10" height="2.4"/><rect x="85" y="26" width="10" height="2.4"/><rect x="112" y="26" width="10" height="2.4"/><rect x="139" y="26" width="10" height="2.4"/><rect x="166" y="26" width="10" height="2.4"/><rect x="193" y="26" width="10" height="2.4"/><rect x="220" y="26" width="10" height="2.4"/><rect x="247" y="26" width="10" height="2.4"/><rect x="274" y="26" width="10" height="2.4"/><rect x="301" y="26" width="10" height="2.4"/></g>
+          <g fill="#a80000"><rect x="4" y="77" width="10" height="2.4"/><rect x="31" y="77" width="10" height="2.4"/><rect x="58" y="77" width="10" height="2.4"/><rect x="85" y="77" width="10" height="2.4"/><rect x="112" y="77" width="10" height="2.4"/><rect x="139" y="77" width="10" height="2.4"/><rect x="166" y="77" width="10" height="2.4"/><rect x="193" y="77" width="10" height="2.4"/><rect x="220" y="77" width="10" height="2.4"/><rect x="247" y="77" width="10" height="2.4"/><rect x="274" y="77" width="10" height="2.4"/><rect x="301" y="77" width="10" height="2.4"/></g>
+          <!-- light sea haze over the flag: objects read first, flag second -->
+          <rect width="324" height="114" fill="#5b84ad" opacity="0.18"/>
+          <!-- Iran coast: a solid land wedge drawn over the flag, thin enough that the green band shows above it -->
+          <g transform="translate(0,3) scale(1,1.1)">
+          <path d="M0,30 L40,26 L84,31 L128,27 L172,32 L216,28 L262,32 L300,27 L324,31 L324,40 L286,45 L248,39 L214,48 L180,42 L142,47 L104,53 L64,57 L0,60 Z" fill="#e2cf9f" stroke="#b39b5e" stroke-width="1.5"/>
+          <!-- relief shading along the coast -->
+          <path d="M0,60 L64,57 L104,53 L142,47 L180,42 L214,48 L248,39 L286,45 L324,40 L324,46 L286,51 L248,45 L214,54 L180,48 L142,53 L104,59 L64,63 L0,66 Z" fill="#cbb37e" opacity="0.45"/>
+          <text x="28" y="47" font-size="10.5" font-weight="bold" fill="#5d4c22" letter-spacing="2">IRAN</text>
+          </g>
+          <!-- red emblem centred in the white band (drawn after the coast so the relief shading cannot wash it out) -->
+          <g transform="translate(166,59) scale(1.9)" stroke="#da0000" stroke-width="0.75" fill="none"><path d="M0,-4.5 c-2.8,2.8 -2.8,6.4 0,9.2 c2.8,-2.8 2.8,-6.4 0,-9.2 M-4.5,-2.5 c-.8,3.4 .8,6 2.6,7.8 M4.5,-2.5 c.8,3.4 -.8,6 -2.6,7.8"/></g>
+          <!-- Oman coast strips (bottom corners) -->
+          <g transform="translate(0,14)">
+          <path d="M0,100 L0,88 L52,84 L96,92 L124,100 Z" fill="#e2cf9f" stroke="#b39b5e" stroke-width="1.5"/>
+          <path d="M324,100 L324,86 L284,82 L250,90 L230,100 Z" fill="#e2cf9f" stroke="#b39b5e" stroke-width="1.5"/>
+          <text x="14" y="98" font-size="9" font-weight="bold" fill="#5d4c22" letter-spacing="2">OMAN</text>
+          </g>
+          <text x="254" y="71" font-size="9.5" font-weight="bold" fill="#33506e">KHASAB</text>
+          <!-- dashed strike arc from the Iranian coast -->
+          <path d="M200,52 Q197,68 196,84" stroke="#c8102e" stroke-width="2.4" stroke-dasharray="5,3.4" fill="none"/>
+          <!-- tanker, fully in frame -->
+          <g transform="translate(0,14)">
+            <path d="M124,82 L252,82 L241,96 L136,96 Z" fill="#26303a"/>
+            <rect x="136" y="74" width="104" height="8" fill="#3d4a57"/>
+            <rect x="148" y="67" width="24" height="7" fill="#5a6874"/>
+            <rect x="206" y="67" width="24" height="7" fill="#5a6874"/>
+            <rect x="132" y="68" width="14" height="14" fill="#26303a"/>
+            <rect x="226" y="58" width="11" height="24" fill="#26303a"/>
+            <rect x="228.5" y="61" width="6" height="4" fill="#9fc2dd"/>
+          <!-- explosion flash behind the starburst, so it stays crisp over the red band -->
+          <circle cx="196" cy="78" r="20" fill="#ffdf9e" opacity="0.35"/>
+          <circle cx="196" cy="78" r="15" fill="#ffe9c9" opacity="0.9"/>
+          <!-- starburst on the tanker -->
+          <g transform="translate(196,78)" fill="#e07b24" stroke="#b01e24" stroke-width="1">
+            <path d="M0,-13 L3,-4 L12,-7 L5,1 L13,4 L4,6 L6,14 L0,7 L-6,14 L-4,5 L-13,3 L-5,0 L-11,-8 L-3,-5 Z"/>
+          </g>
+          </g>
+        </svg>
+        <div class="hdr">HORMUZ · THE STRAIT</div>
+        <div class="dtag" style="background:#b01e24; right:8px; top:26px;">6TH SHIP HIT</div>
+        <div class="dtag" style="background:#141414; right:8px; bottom:6px; font-size:10.5px;">CREW SAFE</div>
+      </div>
+      <div class="sub">UKMTO: PROJECTILE HIT · ENGINE-ROOM FIRE</div>
+      <div class="tagrow"><span class="num" style="background:#8a7d1e">1</span><span class="tag" style="color:#8a7d1e">HORMUZ · WAR AT SEA</span><span class="chip CONFIRMED">CONFIRMED</span></div>
+      <h2>A sixth tanker is hit in Hormuz</h2>
+      <div class="dek">A tanker leaving the strait was hit by an unknown projectile at 06:00 GMT, its engine room ablaze; all crew safe. Iran's Guards claim the sixth ship struck since Friday — attacks at their highest rate of the war.</div>
+      <div class="src">SOURCES: UKMTO · MARISKS · CNN</div>
+    </div>
+
+    <!-- HERO 2 · COP31 -->
+    <div class="hero">
+      <div class="art">
+        <svg width="100%" height="114" viewBox="0 0 324 114" preserveAspectRatio="none">
+          <!-- Türkiye flag as the backdrop of the whole scene -->
+          <rect width="324" height="114" fill="#e30a17"/>
+          <circle cx="52" cy="57" r="25" fill="#fff"/>
+          <circle cx="60" cy="57" r="20" fill="#e30a17"/>
+          <polygon points="294.0,57.0 286.1,60.0 285.7,68.4 280.4,61.8 272.3,64.1 277.0,57.0 272.3,49.9 280.4,52.2 285.7,45.6 286.1,54.0" fill="#fff"/>
+          <!-- light haze over the flag: objects read first, flag second -->
+          <rect width="324" height="114" fill="#5b84ad" opacity="0.18"/>
+          <!-- document -->
+          <g transform="rotate(-2 162 66)">
+            <rect x="74" y="16" width="176" height="98" fill="#fdfaf0" stroke="#141414" stroke-width="1.5"/>
+            <text x="88" y="36" font-family="Georgia,serif" font-size="13.5" font-weight="bold" fill="#141414">THE ANTALYA PACT</text>
+            <text x="88" y="47" font-size="7" letter-spacing="1.5" fill="#6d6242">FINAL TEXT · FOR ADOPTION · SUNDAY</text>
+            <rect x="88" y="53" width="148" height="4.6" fill="#c9c2ab"/>
+            <rect x="88" y="61" width="148" height="4.6" fill="#c9c2ab"/>
+            <text x="88" y="76" font-size="7.6" font-weight="bold" fill="#333">“TRANSITION AWAY FROM FOSSIL FUELS”</text>
+            <line x1="86" y1="73.5" x2="238" y2="73.5" stroke="#b01e24" stroke-width="2"/>
+            <rect x="88" y="81" width="120" height="4.6" fill="#c9c2ab"/>
+            <rect x="88" y="89" width="136" height="4.6" fill="#c9c2ab"/>
+            <rect x="88" y="97" width="96" height="4.6" fill="#c9c2ab"/>
+          </g>
+          <!-- stamp (cream halo keeps the red stamp readable over the red flag) -->
+          <g transform="rotate(-13 210 91)">
+            <rect x="135" y="74" width="152" height="33" fill="none" stroke="#fdfaf0" stroke-width="7" opacity="0.85"/>
+            <rect x="138" y="77" width="146" height="27" fill="none" stroke="#b01e24" stroke-width="3"/>
+            <text x="211" y="97" font-size="17.5" font-weight="bold" fill="#b01e24" text-anchor="middle" letter-spacing="1.5" stroke="#fdfaf0" stroke-width="3" style="paint-order:stroke">NOT ADOPTED</text>
+          </g>
+        </svg>
+        <div class="hdr">ANTALYA · COP31</div>
+        <div class="dtag" style="background:#141414; left:8px; bottom:6px; font-size:10.5px;">49 HRS OVERTIME</div>
+      </div>
+      <div class="sub">THE MORNING AFTER: REFORM CALLS, BLAME — AND NO DEAL</div>
+      <div class="tagrow"><span class="num" style="background:#2f5aa8">2</span><span class="tag" style="color:#2f5aa8">ANTALYA · CLIMATE</span><span class="chip CONFIRMED">CONFIRMED</span></div>
+      <h2>COP31 ends with no deal at all</h2>
+      <div class="dek">The summit collapsed on Sunday — 190+ countries, no consensus, fossil fuels unnamed. On Monday the recriminations began: Guterres voiced “profound frustration”, Gore called the petrostate veto “outrageous”.</div>
+      <div class="src">SOURCES: CNN · AP · AFP</div>
+    </div>
+
+    <!-- HERO 3 · BELGIUM -->
+    <div class="hero">
+      <div class="art">
+        <svg width="100%" height="114" viewBox="0 0 324 114" preserveAspectRatio="none">
+          <!-- Belgium flag as the backdrop of the whole scene -->
+          <rect width="108" height="114" fill="#000"/>
+          <rect x="108" width="108" height="114" fill="#fdda24"/>
+          <rect x="216" width="108" height="114" fill="#ef3340"/>
+          <!-- light haze over the flag: objects read first, flag second -->
+          <rect width="324" height="114" fill="#5b84ad" opacity="0.18"/>
+          <rect x="0" y="100" width="324" height="14" fill="#5c6670"/>
+          <rect x="0" y="100" width="324" height="4" fill="#454e56"/>
+          <line x1="0" y1="108" x2="324" y2="108" stroke="#e8e2c8" stroke-width="2" stroke-dasharray="16,12"/>
+          <!-- tower -->
+          <g transform="translate(0,12)">
+            <path d="M196,88 L204,44 L220,44 L228,88 Z" fill="#39424c"/>
+            <rect x="192" y="30" width="40" height="15" fill="#26303a"/>
+            <rect x="196" y="33" width="32" height="6" fill="#9fc2dd"/>
+            <line x1="212" y1="30" x2="212" y2="8" stroke="#26303a" stroke-width="2.4"/>
+          </g>
+          <!-- grounded planes (pale outline keeps the left plane readable over the black band) -->
+          <g transform="translate(0,12)" fill="#26303a" stroke="#e8e2c8" stroke-width="1.3">
+            <path d="M18,92 L74,92 L96,84 L98,88 L78,96 L78,99 L64,99 L64,96 L20,96 Z"/>
+            <path d="M238,94 L282,94 L298,87 L300,90 L286,97 L286,100 L274,100 L274,97 L240,97 Z"/>
+          </g>
+        </svg>
+        <div class="hdr">BRUSSELS · BELGIUM</div>
+        <div class="dtag" style="background:#b01e24; left:8px; bottom:6px;">429 FLIGHTS OFF</div>
+        <div class="dtag" style="background:#141414; right:8px; bottom:6px; font-size:10.5px;">07:00–21:00</div>
+      </div>
+      <div class="sub">AIRSPACE SHUT FOR THE NATIONAL STRIKE · CHARLEROI CLOSED ALL DAY</div>
+      <div class="tagrow"><span class="num" style="background:#2f5aa8">3</span><span class="tag" style="color:#2f5aa8">BRUSSELS · LABOUR</span><span class="chip OFFICIAL">OFFICIAL</span></div>
+      <h2>Belgium's skies fall silent</h2>
+      <div class="dek">Air traffic control is suspended from 07:00 to 21:00 as controllers join the national strike against austerity. Brussels cancels 429 flights and some 59,500 passengers; trains, at least, run as normal.</div>
+      <div class="src">SOURCES: SKEYES · BELGA · BRUSSELS AIRPORT</div>
+    </div>
+  </div>
+
+  <div class="smalls">
+   <div class="srow">
+
+    <div class="small">
+      <div class="art">
+        <svg width="100%" height="56" viewBox="0 0 186 56" preserveAspectRatio="none">
+          <!-- Ukraine flag as the backdrop -->
+          <rect width="186" height="28" fill="#005bbb"/>
+          <rect y="28" width="186" height="28" fill="#ffd500"/>
+          <rect width="186" height="56" fill="#5b84ad" opacity="0.18"/>
+          <g fill="#8d8574"><rect x="58" y="18" width="52" height="34"/><rect x="62" y="24" width="9" height="8" fill="#5d5748"/><rect x="76" y="24" width="9" height="8" fill="#5d5748"/><rect x="90" y="24" width="9" height="8" fill="#5d5748"/></g>
+          <g fill="#6e675a"><path d="M104,26 L150,38 L146,52 L100,48 Z"/><path d="M96,40 L138,50 L134,56 L94,52 Z"/></g>
+          <g stroke="#f6efdb" stroke-width="5" opacity="0.45"><line x1="20" y1="6" x2="120" y2="6"/><line x1="112" y1="6" x2="112" y2="22"/><line x1="112" y1="22" x2="126" y2="22"/></g>
+          <line x1="20" y1="6" x2="120" y2="6" stroke="#39424c" stroke-width="3"/>
+          <line x1="112" y1="6" x2="112" y2="22" stroke="#39424c" stroke-width="2"/>
+          <line x1="112" y1="22" x2="126" y2="22" stroke="#39424c" stroke-width="2.4"/>
+        </svg>
+        <div class="dtag" style="background:#b01e24; right:5px; bottom:4px;">14 HOURS</div>
+      </div>
+      <div class="tagrow"><span class="num" style="background:#2f5aa8">4</span><span class="tag" style="color:#2f5aa8">DYMER · WAR</span><span class="chip CONFIRMED">CONFIRMED</span></div>
+      <h3>Toll rises in Dymer as the search goes on</h3>
+      <div class="src">SOURCES: BBC · INTERIOR MINISTRY</div>
+    </div>
+
+    <div class="small">
+      <div class="art">
+        <svg width="100%" height="56" viewBox="0 0 186 56" preserveAspectRatio="none">
+          <!-- South Korea flag as the backdrop -->
+          <rect width="186" height="56" fill="#fff"/>
+          <g transform="translate(93,28) scale(1.444) translate(-30,-20)">
+            <path d="M21,20 a9,9 0 0 1 18,0 a4.5,4.5 0 0 1 -9,0 a4.5,4.5 0 0 0 -9,0 Z" fill="#cd2e3a"/>
+            <path d="M21,20 a9,9 0 0 0 18,0 a4.5,4.5 0 0 0 -9,0 a4.5,4.5 0 0 1 -9,0 Z" fill="#0047a0"/>
+          </g>
+          <g fill="#141414">
+            <rect x="8" y="5" width="15" height="3"/><rect x="8" y="10.2" width="15" height="3"/><rect x="8" y="15.4" width="15" height="3"/>
+            <rect x="163" y="5" width="6.5" height="3"/><rect x="171.5" y="5" width="6.5" height="3"/><rect x="163" y="10.2" width="15" height="3"/><rect x="163" y="15.4" width="6.5" height="3"/><rect x="171.5" y="15.4" width="6.5" height="3"/>
+            <rect x="8" y="35.6" width="15" height="3"/><rect x="8" y="40.8" width="6.5" height="3"/><rect x="16.5" y="40.8" width="6.5" height="3"/><rect x="8" y="46" width="15" height="3"/>
+            <rect x="163" y="35.6" width="6.5" height="3"/><rect x="171.5" y="35.6" width="6.5" height="3"/><rect x="163" y="40.8" width="6.5" height="3"/><rect x="171.5" y="40.8" width="6.5" height="3"/><rect x="163" y="46" width="6.5" height="3"/><rect x="171.5" y="46" width="6.5" height="3"/>
+          </g>
+          <rect width="186" height="56" fill="#5b84ad" opacity="0.18"/>
+          <g stroke="#274b5c" stroke-width="1"><line x1="0" y1="14" x2="186" y2="14"/><line x1="0" y1="28" x2="186" y2="28"/><line x1="0" y1="42" x2="186" y2="42"/></g>
+          <polyline points="52,10 84,16 108,15 132,30 156,28 180,46" fill="none" stroke="#10222e" stroke-width="5.5" opacity="0.5"/>
+          <polyline points="52,10 84,16 108,15 132,30 156,28 180,46" fill="none" stroke="#e5484d" stroke-width="3"/>
+          <circle cx="180" cy="46" r="3.4" fill="#e5484d"/>
+          <text x="120" y="50" font-size="8" fill="#d8b93a" font-weight="bold" stroke="#10222e" stroke-width="2.6" style="paint-order:stroke">GOLD $3,603 ▲2%</text>
+        </svg>
+        <div class="dtag" style="background:#b01e24; left:5px; bottom:4px;">KOSPI −5.8%</div>
+      </div>
+      <div class="tagrow"><span class="num" style="background:#c8102e">5</span><span class="tag" style="color:#c8102e">ASIA · MARKETS</span><span class="chip CONFIRMED">CONFIRMED</span></div>
+      <h3>Asia's markets slide, Seoul leads the fall</h3>
+      <div class="src">SOURCE: EXCHANGE TAPE</div>
+    </div>
+
+    <div class="small">
+      <div class="art">
+        <svg width="100%" height="56" viewBox="0 0 186 56" preserveAspectRatio="none">
+          <!-- New Zealand flag as the backdrop -->
+          <rect width="186" height="56" fill="#00247d"/>
+          <svg x="0" y="0" width="93" height="28" viewBox="0 0 30 20" preserveAspectRatio="none">
+            <rect width="30" height="20" fill="#00247d"/>
+            <g stroke="#fff" stroke-width="3.4"><line x1="0" y1="0" x2="30" y2="20"/><line x1="30" y1="0" x2="0" y2="20"/></g>
+            <g stroke="#c8102e" stroke-width="1.5"><line x1="0" y1="0" x2="30" y2="20"/><line x1="30" y1="0" x2="0" y2="20"/></g>
+            <rect x="12.4" width="5.2" height="20" fill="#fff"/><rect y="7.4" width="30" height="5.2" fill="#fff"/>
+            <rect x="13.6" width="2.8" height="20" fill="#c8102e"/><rect y="8.6" width="30" height="2.8" fill="#c8102e"/>
+          </svg>
+          <g fill="#c8102e" stroke="#fff" stroke-width="0.7">
+            <polygon points="140.0,6.4 140.9,8.8 143.4,8.9 141.4,10.5 142.1,12.9 140.0,11.5 137.9,12.9 138.6,10.5 136.6,8.9 139.1,8.8"/>
+            <polygon points="155.0,15.4 155.9,17.8 158.4,17.9 156.4,19.5 157.1,21.9 155.0,20.5 152.9,21.9 153.6,19.5 151.6,17.9 154.1,17.8"/>
+            <polygon points="133.0,23.4 133.9,25.8 136.4,25.9 134.4,27.5 135.1,29.9 133.0,28.5 130.9,29.9 131.6,27.5 129.6,25.9 132.1,25.8"/>
+            <polygon points="149.0,31.4 149.9,33.8 152.4,33.9 150.4,35.5 151.1,37.9 149.0,36.5 146.9,37.9 147.6,35.5 145.6,33.9 148.1,33.8"/>
+          </g>
+          <rect width="186" height="56" fill="#5b84ad" opacity="0.18"/>
+          <!-- compact Southern Cross in the visible navy below the canton (the fly stars sit behind the scoreboard) -->
+          <g fill="#c8102e" stroke="#fff" stroke-width="0.55">
+            <polygon points="11.0,27.1 11.4,28.3 12.7,28.3 11.7,29.1 12.0,30.4 11.0,29.7 10.0,30.4 10.3,29.1 9.3,28.3 10.6,28.3"/>
+            <polygon points="22.0,29.1 22.4,30.3 23.7,30.3 22.7,31.1 23.0,32.4 22.0,31.7 21.0,32.4 21.3,31.1 20.3,30.3 21.6,30.3"/>
+            <polygon points="33.0,28.1 33.4,29.3 34.7,29.3 33.7,30.1 34.0,31.4 33.0,30.7 32.0,31.4 32.3,30.1 31.3,29.3 32.6,29.3"/>
+            <polygon points="16.0,30.6 16.4,31.8 17.7,31.8 16.7,32.6 17.0,33.9 16.0,33.2 15.0,33.9 15.3,32.6 14.3,31.8 15.6,31.8"/>
+          </g>
+          <!-- pitch as a solid ground strip over the flag -->
+          <rect x="0" y="40" width="186" height="16" fill="#67984a"/>
+          <rect x="0" y="40" width="186" height="3" fill="#7fae5c"/>
+          <g><rect x="96" y="8" width="84" height="34" fill="#26303a" stroke="#f6efdb" stroke-width="1.6"/>
+          <text x="103" y="22" font-size="9.5" fill="#ffd94d" font-weight="bold">IND 720/9d</text>
+          <text x="103" y="35" font-size="9.5" fill="#fff" font-weight="bold">NZ 239/5</text></g>
+          <g transform="rotate(24 66 38)"><rect x="62" y="20" width="7" height="30" rx="3" fill="#c9a35f" stroke="#8a6d34"/></g>
+          <circle cx="84" cy="42" r="4.6" fill="#b01e24" stroke="#f6efdb" stroke-width="1"/>
+        </svg>
+        <div class="dtag" style="background:#141414; left:5px; bottom:4px;">DRAWN</div>
+      </div>
+      <div class="tagrow"><span class="num" style="background:#0f766e">6</span><span class="tag" style="color:#0f766e">WELLINGTON · CRICKET</span><span class="chip CONFIRMED">CONFIRMED</span></div>
+      <h3>New Zealand bat out 120 overs to save the Test</h3>
+      <div class="src">SOURCE: CRICINFO</div>
+    </div>
+
+    <div class="small">
+      <div class="art">
+        <svg width="100%" height="56" viewBox="0 0 186 56" preserveAspectRatio="none">
+          <!-- Vanuatu flag as the backdrop -->
+          <rect width="186" height="28" fill="#d21034"/>
+          <rect y="28" width="186" height="28" fill="#009739"/>
+          <polygon points="0,0 84,28 0,56" fill="#000"/>
+          <g stroke="#fcd116" stroke-width="2" fill="none"><circle cx="27" cy="28" r="9.5"/><path d="M37,19 l9,-5 M37,37 l9,5"/></g>
+          <circle cx="27" cy="28" r="2" fill="#fcd116"/>
+          <rect width="186" height="56" fill="#5b84ad" opacity="0.18"/>
+          <!-- ground cross-section as a solid strip over the flag -->
+          <path d="M0,38 L30,29 L52,35 L74,30 L96,36 L118,29 L140,34 L164,30 L186,36 L186,40 L0,40 Z" fill="#5d8a4a"/>
+          <path d="M0,38 L186,38 L186,44 L0,44 Z" fill="#a9805a"/>
+          <path d="M0,44 L186,44 L186,50 L0,50 Z" fill="#8a6238"/>
+          <path d="M0,50 L186,50 L186,56 L0,56 Z" fill="#6e4a26"/>
+          <line x1="128" y1="8" x2="128" y2="46" stroke="#fff" stroke-width="1.8" stroke-dasharray="4,3"/>
+          <g transform="translate(128,48)" fill="#ffd94d" stroke="#b01e24"><path d="M0,-6 L1.6,-1.6 L6,-2 L2.4,0.8 L4,5 L0,2.4 L-4,5 L-2.4,0.8 L-6,-2 L-1.6,-1.6 Z"/></g>
+          <text x="136" y="24" font-size="8.5" fill="#fff" font-weight="bold">M6.5</text>
+        </svg>
+        <div class="dtag" style="background:#141414; right:5px; bottom:4px;">601 KM DEEP</div>
+      </div>
+      <div class="tagrow"><span class="num" style="background:#0f766e">7</span><span class="tag" style="color:#0f766e">VANUATU · QUAKE</span><span class="chip OFFICIAL">OFFICIAL</span></div>
+      <h3>A deep M6.5 quake stirs Vanuatu, no damage</h3>
+      <div class="src">SOURCE: USGS</div>
+    </div>
+
+    <div class="small">
+      <div class="art">
+        <svg width="100%" height="56" viewBox="0 0 186 56" preserveAspectRatio="none">
+          <!-- Indonesia flag as the backdrop -->
+          <rect width="186" height="28" fill="#e70011"/>
+          <rect y="28" width="186" height="28" fill="#fff"/>
+          <rect width="186" height="56" fill="#5b84ad" opacity="0.18"/>
+          <g fill="#4a4438" stroke="#f6efdb" stroke-width="0.9"><rect x="66" y="28" width="76" height="24"/><path d="M62,28 L100,14 L146,28 Z"/><rect x="80" y="36" width="10" height="10" fill="#2c2820"/><rect x="100" y="36" width="10" height="10" fill="#2c2820"/><rect x="118" y="18" width="7" height="14"/></g>
+          <g fill="#7a7466" opacity="0.85"><circle cx="121" cy="12" r="6"/><circle cx="130" cy="7" r="8"/><circle cx="142" cy="10" r="6.4"/></g>
+          <path d="M84,44 q3,-6 6,0 q3,-6 6,0" stroke="#e07b24" stroke-width="2.2" fill="none"/>
+        </svg>
+        <div class="dtag" style="background:#b01e24; right:5px; bottom:4px;">~50 MISSING</div>
+      </div>
+      <div class="tagrow"><span class="num" style="background:#43aa5b">8</span><span class="tag" style="color:#2c7a3e">SERANG · DISASTER</span><span class="chip REPORTED">REPORTED</span></div>
+      <h3>The search goes on at the Serang factory</h3>
+      <div class="src">SOURCES: BASARNAS · POLICE</div>
+    </div>
+   </div>
+
+   <div class="srow">
+
+    <div class="small">
+      <div class="art">
+        <svg width="100%" height="56" viewBox="0 0 186 56" preserveAspectRatio="none">
+          <!-- Nepal flag as the backdrop: blue border field, crimson double-pennon -->
+          <rect width="186" height="56" fill="#003893"/>
+          <path d="M8,5 L180,28 L48,28 L180,51 L8,51 Z" fill="#dc143c"/>
+          <rect width="186" height="56" fill="#5b84ad" opacity="0.18"/>
+          <g><circle cx="29" cy="13" r="5.5" fill="#fff"/><circle cx="31.5" cy="11" r="4.6" fill="#dc143c"/></g>
+          <g stroke="#fff" stroke-width="1.6"><circle cx="60" cy="41" r="3.6" fill="#fff"/><line x1="60" y1="33.5" x2="60" y2="35.8"/><line x1="60" y1="46.2" x2="60" y2="48.5"/><line x1="52.5" y1="41" x2="54.8" y2="41"/><line x1="65.2" y1="41" x2="67.5" y2="41"/><line x1="54.7" y1="35.7" x2="56.3" y2="37.3"/><line x1="63.7" y1="44.7" x2="65.3" y2="46.3"/><line x1="65.3" y1="35.7" x2="63.7" y2="37.3"/><line x1="56.3" y1="44.7" x2="54.7" y2="46.3"/></g>
+          <path d="M0,56 L40,22 L78,56 Z" fill="#7d94a8"/>
+          <path d="M52,56 L104,14 L156,56 Z" fill="#5d7d99"/>
+          <path d="M96,22 L104,14 L112,22 L106,22 L106,26 L102,26 L102,22 Z" fill="#eef4fa"/>
+          <g fill="#39424c" stroke="#f6efdb" stroke-width="0.9"><path d="M128,52 L132,40 L136,52 Z"/><rect x="124" y="50" width="16" height="3"/><path d="M127,40 L132,34 L137,40 Z"/><rect x="121" y="44" width="22" height="2.6"/></g>
+        </svg>
+        <div class="dtag" style="background:#141414; right:5px; bottom:4px;">FIRST VISIT</div>
+      </div>
+      <div class="tagrow"><span class="num" style="background:#e07b24">9</span><span class="tag" style="color:#c2610f">NEW DELHI · DIPLOMACY</span><span class="chip CONFIRMED">CONFIRMED</span></div>
+      <h3>Nepal's Balen Shah opens his India visit</h3>
+      <div class="src">SOURCES: THE HINDU · WIRES</div>
+    </div>
+
+    <div class="small">
+      <div class="art">
+        <svg width="100%" height="56" viewBox="0 0 186 56" preserveAspectRatio="none">
+          <!-- split backdrop: India left, China right, the seam is the contested line -->
+          <rect width="93" height="18.7" fill="#ff9933"/>
+          <rect y="18.7" width="93" height="18.6" fill="#fff"/>
+          <rect y="37.3" width="93" height="18.7" fill="#138808"/>
+          <circle cx="46" cy="27" r="9" fill="none" stroke="#000080" stroke-width="1.6"/>
+          <g stroke="#000080" stroke-width="1"><line x1="46" y1="18.8" x2="46" y2="35.2"/><line x1="37.8" y1="27" x2="54.2" y2="27"/><line x1="40.2" y1="21.2" x2="51.8" y2="32.8"/><line x1="51.8" y1="21.2" x2="40.2" y2="32.8"/></g>
+          <circle cx="46" cy="27" r="1.5" fill="#000080"/>
+          <rect x="93" width="93" height="56" fill="#de2910"/>
+          <polygon points="113.0,8.0 114.7,12.6 119.7,12.8 115.8,15.9 117.1,20.7 113.0,17.9 108.9,20.7 110.2,15.9 106.3,12.8 111.3,12.6" fill="#ffde00"/>
+          <polygon points="130.8,5.9 129.2,7.3 129.9,9.3 128.1,8.3 126.4,9.5 126.8,7.5 125.1,6.3 127.2,6.0 127.8,4.0 128.7,5.9" fill="#ffde00"/>
+          <polygon points="134.2,12.9 133.2,14.8 134.6,16.4 132.6,16.1 131.5,18.0 131.1,15.9 129.0,15.4 130.9,14.4 130.7,12.3 132.2,13.8" fill="#ffde00"/>
+          <polygon points="133.2,22.3 133.1,24.4 135.0,25.3 132.9,25.8 132.6,27.9 131.5,26.2 129.4,26.5 130.7,24.9 129.8,23.0 131.7,23.8" fill="#ffde00"/>
+          <polygon points="128.2,30.0 128.8,32.0 130.9,32.3 129.2,33.5 129.6,35.5 127.9,34.3 126.1,35.3 126.8,33.3 125.2,31.9 127.3,31.9" fill="#ffde00"/>
+          <rect width="186" height="56" fill="#5b84ad" opacity="0.18"/>
+          <path d="M0,44 L30,26 L58,38 L84,20 L112,36 L140,24 L168,38 L186,30 L186,56 L0,56 Z" fill="#7a8a72"/>
+          <line x1="93" y1="10" x2="93" y2="34" stroke="#fff" stroke-width="4" stroke-dasharray="4,3" opacity="0.65"/>
+          <line x1="93" y1="10" x2="93" y2="34" stroke="#c8102e" stroke-width="2" stroke-dasharray="4,3"/>
+          <line x1="34" y1="4" x2="34" y2="44" stroke="#333" stroke-width="1.8"/>
+          <line x1="150" y1="2" x2="150" y2="42" stroke="#333" stroke-width="1.8"/>
+        </svg>
+        <div class="dtag" style="background:#141414; left:5px; bottom:4px;">10 DAYS</div>
+      </div>
+      <div class="tagrow"><span class="num" style="background:#e07b24">10</span><span class="tag" style="color:#c2610f">ARUNACHAL · BORDER</span><span class="chip REPORTED">REPORTED</span></div>
+      <h3>India and China talk at the contested line</h3>
+      <div class="src">SOURCES: THE HINDU · INDIAN WIRES</div>
+    </div>
+
+    <div class="small">
+      <div class="art">
+        <svg width="100%" height="56" viewBox="0 0 186 56" preserveAspectRatio="none">
+          <!-- Libya flag as the backdrop -->
+          <rect width="186" height="14" fill="#e70013"/>
+          <rect y="14" width="186" height="28" fill="#000"/>
+          <rect y="42" width="186" height="14" fill="#007a3d"/>
+          <circle cx="88" cy="28" r="8" fill="#fff"/>
+          <circle cx="90.8" cy="28" r="6.4" fill="#000"/>
+          <polygon points="102.0,23.8 103.0,26.6 106.0,26.7 103.7,28.5 104.5,31.4 102.0,29.8 99.5,31.4 100.3,28.5 98.0,26.7 101.0,26.6" fill="#fff"/>
+          <rect width="186" height="56" fill="#5b84ad" opacity="0.18"/>
+          <!-- water as a solid strip over the flag -->
+          <rect x="0" y="40" width="186" height="16" fill="#41648a"/>
+          <rect x="118" y="30" width="68" height="14" fill="#8a7a54"/>
+          <g transform="rotate(24 74 40)" stroke="#e8e2c8" stroke-width="1.1"><path d="M34,34 L116,34 L108,46 L44,46 Z" fill="#39424c"/><rect x="52" y="26" width="34" height="8" fill="#4a5560"/><rect x="88" y="22" width="6" height="12" fill="#39424c"/></g>
+          <g fill="#26303a" stroke="#e8e2c8" stroke-width="0.8"><path d="M16,40 l12,-3 l-2,5 l-10,2 Z"/><path d="M30,48 l12,-3 l-2,5 l-10,2 Z"/></g>
+          <g fill="#7a7466" opacity="0.8"><circle cx="96" cy="26" r="5"/><circle cx="104" cy="21" r="6.6"/></g>
+        </svg>
+        <div class="dtag" style="background:#b01e24; right:5px; bottom:4px;">2 DRONES HIT</div>
+      </div>
+      <div class="tagrow"><span class="num" style="background:#14632e">11</span><span class="tag" style="color:#14632e">BENGHAZI · WAR AT SEA</span><span class="chip CONFIRMED">CONFIRMED</span></div>
+      <h3>A Russian corvette lies capsized at Benghazi</h3>
+      <div class="src">SOURCES: AP · REUTERS · WSJ · TWZ</div>
+    </div>
+
+    <div class="small">
+      <div class="art">
+        <svg width="100%" height="56" viewBox="0 0 186 56" preserveAspectRatio="none">
+          <!-- South Sudan flag as the backdrop -->
+          <rect width="186" height="17.6" fill="#000"/>
+          <rect y="17.6" width="186" height="2.6" fill="#fff"/>
+          <rect y="20.2" width="186" height="15.6" fill="#da121a"/>
+          <rect y="35.8" width="186" height="2.6" fill="#fff"/>
+          <rect y="38.4" width="186" height="17.6" fill="#078930"/>
+          <polygon points="0,0 71,28 0,56" fill="#0f47af"/>
+          <polygon points="26.0,22.0 27.5,26.0 31.7,26.1 28.4,28.8 29.5,32.9 26.0,30.5 22.5,32.9 23.6,28.8 20.3,26.1 24.5,26.0" fill="#fcdd09"/>
+          <rect width="186" height="56" fill="#5b84ad" opacity="0.18"/>
+          <!-- ground as a solid strip over the flag -->
+          <rect x="0" y="40" width="186" height="16" fill="#d9b96a"/>
+          <circle cx="152" cy="13" r="8" fill="#e8a33a"/>
+          <g stroke="#5d7d3a" fill="none" stroke-width="2.2"><path d="M96,50 L96,30"/><path d="M96,32 q-12,-8 -20,-4 M96,32 q12,-8 20,-4 M96,28 q-8,-10 -16,-10 M96,28 q8,-10 16,-10"/></g>
+          <g fill="#8a6238"><path d="M22,50 L30,40 L38,50 Z"/><path d="M42,50 L50,41 L58,50 Z"/></g>
+        </svg>
+        <div class="dtag" style="background:#141414; right:5px; bottom:4px;">24 KILLED</div>
+      </div>
+      <div class="tagrow"><span class="num" style="background:#14632e">12</span><span class="tag" style="color:#14632e">S. SUDAN · CONFLICT</span><span class="chip REPORTED">REPORTED</span></div>
+      <h3>Attackers kill 24 civilians in South Sudan</h3>
+      <div class="src">SOURCE: AFP</div>
+    </div>
+
+    <div class="small">
+      <div class="art">
+        <svg width="100%" height="56" viewBox="0 0 186 56" preserveAspectRatio="none">
+          <!-- Sudan flag as the backdrop -->
+          <rect width="186" height="18.7" fill="#d21034"/>
+          <rect y="18.7" width="186" height="18.6" fill="#fff"/>
+          <rect y="37.3" width="186" height="18.7" fill="#000"/>
+          <polygon points="0,0 65,28 0,56" fill="#007229"/>
+          <rect width="186" height="56" fill="#5b84ad" opacity="0.18"/>
+          <g fill="#6e675a" stroke="#f6efdb" stroke-width="0.9"><rect x="96" y="30" width="14" height="22"/><rect x="114" y="24" width="18" height="28"/><rect x="136" y="33" width="12" height="19"/><rect x="66" y="34" width="26" height="18" fill="#5d5748"/></g>
+          <rect x="70" y="38" width="18" height="4" fill="#7fb2dd"/>
+          <text x="72" y="49" font-size="7.5" font-weight="bold" fill="#1d4e79">UN</text>
+          <g fill="#39424c" stroke="#f6efdb" stroke-width="0.8"><path d="M118,10 l16,5 l-16,5 l-4,-5 Z"/><rect x="128" y="18" width="3" height="5"/></g>
+          <g fill="#7a7466" opacity="0.8"><circle cx="120" cy="16" r="4.6"/><circle cx="127" cy="12" r="5.6"/></g>
+        </svg>
+        <div class="dtag" style="background:#b01e24; right:5px; bottom:4px;">UN HIT</div>
+      </div>
+      <div class="tagrow"><span class="num" style="background:#14632e">13</span><span class="tag" style="color:#14632e">KHARTOUM · WAR</span><span class="chip REPORTED">REPORTED</span></div>
+      <h3>Drone strikes hit homes and a UN site in Khartoum</h3>
+      <div class="src">SOURCE: AFP</div>
+    </div>
+   </div>
+  </div>
+
+  <div class="bottom">
+    <div class="mapbox">
+      <div class="mhdr">WHERE IT HAPPENED · PINS 1–13 = DRAWN STORIES</div>
+      <div id="worldmap" style="position:absolute; top:19px; left:0;"></div>
+      <div class="legend"><b>CONFIRMED</b> = 2+ outlets · <b>OFFICIAL</b> = on record · <b>REPORTED</b> = one outlet · <b>CLAIM</b> = one side says · Pin colour = the story's region colour</div>
+    </div>
+    <div class="alsobox">
+      <div class="ahdr"><span class="t">Also on Monday</span><span class="s">18 MORE STORIES, ONE LINE EACH</span></div>
+      <div class="also">
+        <div class="acol">
+          <div class="arow"><span class="num" style="background:#8a7d1e">14</span><span><b>HERZLIYA</b> — Netanyahu–Eisenkot talks end with no deal</span></div>
+          <div class="arow"><span class="num" style="background:#14632e">15</span><span><b>GENEVA</b> — WHO chief pleads for peace as fighting stalls Ebola work</span></div>
+          <div class="arow"><span class="num" style="background:#14632e">16</span><span><b>WAWA</b> — At least 35 Fulani killed in revenge attacks in Niger State</span></div>
+          <div class="arow"><span class="num" style="background:#8a7d1e">17</span><span><b>CHABAHAR</b> — UKMTO: a tanker in an incident with military forces</span></div>
+          <div class="arow"><span class="num" style="background:#c8102e">18</span><span><b>SEOUL</b> — Kim: North Korea seeks security, not supremacy</span></div>
+          <div class="arow"><span class="num" style="background:#6d28a8">19</span><span><b>BRASÍLIA</b> — Bolsonaro 'stable' in ICU</span></div>
+        </div>
+        <div class="acol">
+          <div class="arow"><span class="num" style="background:#5b7fa6">20</span><span><b>WASHINGTON</b> — US seeks answers from Nvidia over chip sales to China</span></div>
+          <div class="arow"><span class="num" style="background:#5b7fa6">21</span><span><b>OTTAWA</b> — Hegseth memo tightens US–Canada defence ties</span></div>
+          <div class="arow"><span class="num" style="background:#c8102e">22</span><span><b>OKINAWA</b> — Shuri Castle's hall reopens, 7 years after the fire</span></div>
+          <div class="arow"><span class="num" style="background:#2f5aa8">23</span><span><b>ZURICH</b> — FIFA set to ratify the UK as 2035 Women's World Cup host</span></div>
+          <div class="arow"><span class="num" style="background:#8a7d1e">24</span><span><b>KHARG</b> — 14+ Iranian tankers mass to break the blockade</span></div>
+          <div class="arow"><span class="num" style="background:#2f5aa8">25</span><span><b>FINLAND</b> — Sparta II towed off, smouldering</span></div>
+        </div>
+        <div class="acol">
+          <div class="arow"><span class="num" style="background:#37474f">26</span><span><b>MARKETS</b> — Bitcoin climbs near $61,800 after the slide</span></div>
+          <div class="arow"><span class="num" style="background:#43aa5b">27</span><span><b>YANGON</b> — Junta calls ASEAN's decision 'unfair and imbalanced'</span></div>
+          <div class="arow"><span class="num" style="background:#43aa5b">28</span><span><b>JAKARTA</b> — MSCI said to weigh alternatives to a two-step downgrade</span></div>
+          <div class="arow"><span class="num" style="background:#14632e">29</span><span><b>BENGHAZI</b> — A Maltese-flagged ship is also hit by a sea drone</span></div>
+          <div class="arow"><span class="num" style="background:#8a7d1e">30</span><span><b>MANAMA</b> — Saudis condemn the Bahrain strikes as 'criminal'</span></div>
+          <div class="arow"><span class="num" style="background:#0f766e">31</span><span><b>CANBERRA</b> — Albanese: 'difficult geopolitical times'</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="datecheck">
+    <div class="stamp">DATE<br>CHECK</div>
+    <div class="body">Every story here happened, or was first reported, on <b>Monday 23 November 2026</b> in some time zone; clock times are UTC. Two searches began Sunday (Dymer, Benghazi) and are carried on Monday developments. <b>Weekend news, not shown:</b> the first five Hormuz strikes (Fri–Sun) · Russia's 186-drone wave (Sat) · Lisbon's march (Sat) · the US House called, 258 seats (Sun) · Alcaraz and Verstappen win (Sun). <b>Not yet:</b> NATO's verdict on Friday's missile breach of Poland.</div>
+  </div>
+
+  <div class="footer">
+    <span>Pictures and map drawn in code, not photographs · claims attributed · figures as first reported</span>
+    <span>REUTERS · AP · BBC · AFP · CNN · UKMTO · USGS · CRICINFO · SKEYES · BELGA</span>
+  </div>
+</div>
+
+<script>
+// ---------- flag factory (60x40 space) ----------
+function star(cx,cy,r,rot){ rot=(rot||0)*Math.PI/180; let p=[];
+  for(let i=0;i<10;i++){ const a=rot-Math.PI/2+i*Math.PI/5, rr=i%2? r*0.42:r;
+    p.push((cx+rr*Math.cos(a)).toFixed(1)+','+(cy+rr*Math.sin(a)).toFixed(1)); } return p.join(' '); }
+function crescent(cx,cy,r,dx,col,bg){ return '<circle cx="'+cx+'" cy="'+cy+'" r="'+r+'" fill="'+col+'"/><circle cx="'+(cx+dx)+'" cy="'+cy+'" r="'+(r*0.8)+'" fill="'+bg+'"/>'; }
+const FLAGS = {
+iran:'<rect width="60" height="13.4" fill="#239f40"/><rect y="13.4" width="60" height="13.3" fill="#fff"/><rect y="26.7" width="60" height="13.3" fill="#da0000"/>'
+  +'<g stroke="#da0000" stroke-width="1.3" fill="none"><path d="M30,15.5 c-2.8,2.8 -2.8,6.4 0,9.2 c2.8,-2.8 2.8,-6.4 0,-9.2 M25.5,17.5 c-.8,3.4 .8,6 2.6,7.8 M34.5,17.5 c.8,3.4 -.8,6 -2.6,7.8"/></g>'
+  +'<g fill="#239f40"><rect x="8" y="11.6" width="3" height="1.8"/><rect x="20" y="11.6" width="3" height="1.8"/><rect x="38" y="11.6" width="3" height="1.8"/><rect x="50" y="11.6" width="3" height="1.8"/></g>'
+  +'<g fill="#da0000"><rect x="8" y="26.7" width="3" height="1.8"/><rect x="20" y="26.7" width="3" height="1.8"/><rect x="38" y="26.7" width="3" height="1.8"/><rect x="50" y="26.7" width="3" height="1.8"/></g>',
+turkiye:'<rect width="60" height="40" fill="#e30a17"/>'+crescent(24,20,10.5,3.4,'#fff','#e30a17')+'<polygon points="'+star(39,20,5)+'" fill="#fff"/>',
+belgium:'<rect width="20" height="40" fill="#000"/><rect x="20" width="20" height="40" fill="#fdda24"/><rect x="40" width="20" height="40" fill="#ef3340"/>',
+ukraine:'<rect width="60" height="20" fill="#005bbb"/><rect y="20" width="60" height="20" fill="#ffd500"/>',
+korea:'<rect width="60" height="40" fill="#fff"/>'
+  +'<path d="M21,20 a9,9 0 0 1 18,0 a4.5,4.5 0 0 1 -9,0 a4.5,4.5 0 0 0 -9,0 Z" fill="#cd2e3a"/>'
+  +'<path d="M21,20 a9,9 0 0 0 18,0 a4.5,4.5 0 0 0 -9,0 a4.5,4.5 0 0 1 -9,0 Z" fill="#0047a0"/>'
+  +'<g fill="#141414"><rect x="7" y="6" width="9" height="1.9"/><rect x="7" y="9.4" width="9" height="1.9"/><rect x="7" y="12.8" width="9" height="1.9"/>'
+  +'<rect x="44" y="6" width="4" height="1.9"/><rect x="48.5" y="6" width="4" height="1.9"/><rect x="44" y="9.4" width="9" height="1.9"/><rect x="44" y="12.8" width="4" height="1.9"/><rect x="48.5" y="12.8" width="4" height="1.9"/>'
+  +'<rect x="7" y="25.3" width="9" height="1.9"/><rect x="7" y="28.7" width="4" height="1.9"/><rect x="11.5" y="28.7" width="4" height="1.9"/><rect x="7" y="32.1" width="9" height="1.9"/>'
+  +'<rect x="44" y="25.3" width="4" height="1.9"/><rect x="48.5" y="25.3" width="4" height="1.9"/><rect x="44" y="28.7" width="4" height="1.9"/><rect x="48.5" y="28.7" width="4" height="1.9"/><rect x="44" y="32.1" width="4" height="1.9"/><rect x="48.5" y="32.1" width="4" height="1.9"/></g>',
+nz:'<rect width="60" height="40" fill="#00247d"/><rect width="30" height="20" fill="#00247d"/>'
+  +'<g stroke="#fff" stroke-width="3.4"><line x1="0" y1="0" x2="30" y2="20"/><line x1="30" y1="0" x2="0" y2="20"/></g>'
+  +'<g stroke="#c8102e" stroke-width="1.5"><line x1="0" y1="0" x2="30" y2="20"/><line x1="30" y1="0" x2="0" y2="20"/></g>'
+  +'<rect x="12.4" width="5.2" height="20" fill="#fff"/><rect y="7.4" width="30" height="5.2" fill="#fff"/>'
+  +'<rect x="13.6" width="2.8" height="20" fill="#c8102e"/><rect y="8.6" width="30" height="2.8" fill="#c8102e"/>'
+  +'<g fill="#c8102e" stroke="#fff" stroke-width="0.5"><polygon points="'+star(45,7,2.6)+'"/><polygon points="'+star(50,15,2.6)+'"/><polygon points="'+star(43,23,2.6)+'"/><polygon points="'+star(48,32,2.6)+'"/></g>',
+vanuatu:'<rect width="60" height="20" fill="#d21034"/><rect y="20" width="60" height="20" fill="#009739"/>'
+  +'<polygon points="0,0 27,20 0,40" fill="#000"/>'
+  +'<g stroke="#fcd116" stroke-width="1.4" fill="none"><circle cx="9" cy="20" r="4.4"/><path d="M14,14 l5,-3 M14,26 l5,3"/></g><circle cx="9" cy="20" r="1.4" fill="#fcd116"/>',
+indonesia:'<rect width="60" height="20" fill="#e70011"/><rect y="20" width="60" height="20" fill="#fff"/>',
+nepal:'<path d="M7,3 L37,15.5 L13,15.5 L37,27 L7,37 Z" fill="#dc143c" stroke="#003893" stroke-width="2.6"/>'
+  +'<circle cx="15" cy="10.5" r="2.7" fill="#fff"/><g stroke="#fff" stroke-width="0.9"><line x1="15" y1="6" x2="15" y2="7.4"/><line x1="11" y1="13" x2="12.2" y2="12"/><line x1="19" y1="13" x2="17.8" y2="12"/></g>'
+  +'<path d="M17.5,24.5 a3.4,3.4 0 1 0 2,5.6 a2.7,2.7 0 1 1 -2,-5.6 Z" fill="#fff"/>',
+india:'<rect width="60" height="13.4" fill="#ff9933"/><rect y="13.4" width="60" height="13.3" fill="#fff"/><rect y="26.7" width="60" height="13.3" fill="#138808"/>'
+  +'<circle cx="30" cy="20" r="4.8" fill="none" stroke="#000080" stroke-width="1.5"/>'
+  +'<g stroke="#000080" stroke-width="0.9"><line x1="30" y1="15.6" x2="30" y2="24.4"/><line x1="25.6" y1="20" x2="34.4" y2="20"/><line x1="26.9" y1="16.9" x2="33.1" y2="23.1"/><line x1="33.1" y1="16.9" x2="26.9" y2="23.1"/></g>',
+china:'<rect width="60" height="40" fill="#de2910"/><polygon points="'+star(13,11,5.6)+'" fill="#ffde00"/>'
+  +'<polygon points="'+star(22.5,4.8,2.1,68)+'" fill="#ffde00"/><polygon points="'+star(25.5,10.8,2.1,46)+'" fill="#ffde00"/>'
+  +'<polygon points="'+star(25.5,17.6,2.1,24)+'" fill="#ffde00"/><polygon points="'+star(22.5,23.8,2.1,4)+'" fill="#ffde00"/>',
+libya:'<rect width="60" height="10" fill="#e70013"/><rect y="10" width="60" height="20" fill="#000"/><rect y="30" width="60" height="10" fill="#007a3d"/>'
+  +crescent(28,20,5.6,2,'#fff','#000')+'<polygon points="'+star(36.5,20,2.7)+'" fill="#fff"/>',
+russia:'<rect width="60" height="13.4" fill="#fff"/><rect y="13.4" width="60" height="13.3" fill="#0039a6"/><rect y="26.7" width="60" height="13.3" fill="#d52b1e"/>',
+ssudan:'<rect width="60" height="12.6" fill="#000"/><rect y="12.6" width="60" height="1.8" fill="#fff"/><rect y="14.4" width="60" height="11.2" fill="#da121a"/><rect y="25.6" width="60" height="1.8" fill="#fff"/><rect y="27.4" width="60" height="12.6" fill="#078930"/>'
+  +'<polygon points="0,0 23,20 0,40" fill="#0f47af"/><polygon points="'+star(8.5,20,3.6)+'" fill="#fcdd09"/>',
+sudan:'<rect width="60" height="13.4" fill="#d21034"/><rect y="13.4" width="60" height="13.3" fill="#fff"/><rect y="26.7" width="60" height="13.3" fill="#000"/>'
+  +'<polygon points="0,0 21,20 0,40" fill="#007229"/>'
+};
+function place(id, name, x, y, w, h){
+  const el = document.getElementById(id); if(!el) return;
+  el.innerHTML = '<g transform="translate('+x+','+y+') scale('+(w/60)+','+(h/40)+')"><rect width="60" height="40" fill="none" stroke="rgba(0,0,0,0.35)" stroke-width="1.2"/>'+FLAGS[name]+'</g>';
+}
+// draft5: all flags are drawn natively as panel backdrops in the SVG markup above;
+// the old flown-flag place() calls are gone.
+
+// ---------- world map (chunky flat style, Ora's reference form; sea stays our navy) ----------
+const LAND = [
+[[-165,65],[-150,70],[-132,70],[-118,68],[-102,70],[-92,73],[-86,68],[-81,66],[-79,61],[-72,62],[-63,60],[-56,52],[-64,48],[-69,44],[-71,41],[-74,39],[-76,35],[-79,33],[-81,30],[-80,26],[-83,29],[-88,30],[-94,29],[-97,26],[-97,21],[-94,18],[-89,20],[-87,21],[-86,16],[-83,10],[-79,8],[-84,12],[-90,14],[-96,16],[-102,19],[-107,22],[-110,24],[-114,30],[-117,33],[-121,35],[-123,39],[-124,44],[-125,48],[-129,53],[-135,57],[-145,61],[-156,59],[-162,61]],
+[[-46,60],[-38,64],[-30,68],[-22,70],[-20,74],[-28,78],[-40,80],[-52,78],[-56,72],[-54,66],[-50,62]],
+[[-79,9],[-74,11],[-66,11],[-60,9],[-52,5],[-50,0],[-44,-2],[-36,-6],[-35,-9],[-38,-14],[-39,-19],[-41,-23],[-48,-27],[-52,-33],[-57,-38],[-62,-41],[-65,-45],[-66,-50],[-68,-54],[-71,-54],[-73,-50],[-73,-44],[-73,-38],[-71,-31],[-70,-24],[-70,-19],[-74,-15],[-78,-9],[-81,-4],[-80,1],[-77,5]],
+[[-6,35],[2,36],[10,37],[18,33],[25,32],[30,31],[34,28],[36,23],[38,20],[40,16],[43,12],[48,11],[51,12],[47,5],[42,-1],[40,-8],[39,-15],[38,-20],[35,-25],[32,-29],[27,-33],[20,-35],[18,-33],[16,-28],[14,-20],[13,-14],[12,-8],[13,-3],[9,0],[9,4],[3,6],[-3,5],[-8,5],[-13,8],[-16,11],[-17,15],[-17,19],[-16,24],[-15,28],[-12,30],[-9,32]],
+[[44,-15],[47,-14],[50,-17],[49,-22],[46,-25],[44,-24],[43,-19]],
+[[-9,36],[-9,43],[-4,44],[-6,48],[-2,50],[2,52],[5,53],[8,55],[8,57],[12,56],[18,56],[21,59],[19,62],[14,64],[15,67],[20,69],[28,71],[38,68],[48,68],[60,69],[72,71],[85,73],[98,76],[110,74],[124,73],[138,72],[152,71],[165,69],[178,66],[179,62],[170,60],[162,58],[158,53],[150,50],[143,47],[141,44],[140,40],[138,36],[133,34],[130,33],[127,36],[126,39],[122,38],[121,33],[122,28],[120,25],[115,23],[110,20],[108,16],[107,11],[105,6],[103,2],[101,5],[99,10],[97,15],[94,20],[91,22],[88,22],[85,20],[83,17],[80,13],[78,9],[76,10],[74,15],[72,20],[69,22],[66,25],[61,25],[57,26],[53,27],[50,29],[48,30],[50,26],[54,24],[57,26],[59,22],[56,18],[53,15],[49,14],[44,13],[43,12],[41,16],[39,21],[37,25],[35,29],[36,32],[36,36],[31,36],[27,37],[23,36],[20,38],[19,40],[16,40],[14,43],[11,44],[8,44],[5,43],[3,42],[0,38],[-3,37],[-6,36]],
+[[-5,50],[-2,51],[-1,52],[-3,54],[-4,57],[-6,58],[-8,56],[-7,53],[-6,51]],
+[[-19,64],[-15,63],[-13,64],[-15,66],[-19,66],[-21,65]],
+[[130,31],[132,33],[135,34],[138,35],[140,37],[141,40],[142,43],[144,44],[143,42],[141,39],[139,36],[136,34],[132,32]],
+[[120,12],[121,15],[122,18],[120,17],[119,14]],
+[[95,5],[99,2],[102,-1],[105,-4],[106,-6],[103,-5],[99,0],[96,3]],
+[[106,-6],[110,-6],[114,-7],[114,-9],[109,-8],[106,-8]],
+[[109,1],[112,3],[116,4],[118,2],[119,-1],[117,-3],[113,-3],[110,-1]],
+[[119,0],[120,1],[121,0],[120,-2],[119,-3],[119,-1]],
+[[131,-1],[136,-2],[141,-3],[145,-5],[147,-7],[143,-8],[137,-4],[132,-2]],
+[[166,-15],[169,-14],[170,-16],[168,-19],[166,-18]],
+[[113,-22],[112,-26],[114,-31],[115,-34],[118,-35],[123,-34],[129,-32],[132,-32],[135,-35],[137,-36],[139,-37],[141,-39],[145,-38],[147,-38],[150,-37],[153,-32],[153,-27],[151,-24],[147,-20],[144,-16],[142,-11],[141,-15],[139,-18],[136,-15],[135,-12],[132,-11],[130,-13],[126,-14],[122,-17],[118,-20],[114,-21]],
+[[173,-35],[176,-36],[178,-38],[177,-40],[174,-41],[173,-38]],
+[[167,-45],[169,-43],[172,-41],[172,-43],[170,-45],[168,-46]]
+];
+const PINS = [
+ [1,257.6,48.1,'#8a7d1e'],[2,235,43,'#2f5aa8'],[3,201,29.7,'#2f5aa8'],[4,226,27,'#2f5aa8'],
+ [5,334.6,39.7,'#c8102e'],[6,386.8,99.4,'#0f766e'],[7,379,80.2,'#0f766e'],[8,311.9,72.8,'#43aa5b'],
+ [9,280.4,46.5,'#e07b24'],[10,299.4,46.8,'#e07b24'],[11,218.2,43.8,'#14632e'],[12,227,66,'#14632e'],[13,236,54,'#14632e']
+];
+// black-caps place labels beside pins, as in Ora's reference; cream halo keeps them
+// readable where they fall on the navy sea instead of the tan land
+const LABELS = [
+ ['HORMUZ',243,62,'start'],['ANTALYA',200,66,'middle'],['BRUSSELS',192,33,'end'],['DYMER',226,18,'middle'],
+ ['SEOUL',344,43,'start'],['WELLINGTON',374,94,'end'],['VANUATU',369,76,'end'],['SERANG',303,85,'end'],
+ ['NEW DELHI',284,62,'start'],['ARUNACHAL',295,32,'middle'],['BENGHAZI',209,47,'end'],['JUBA',236,72,'start'],
+ ['KHARTOUM',227,57,'end']
+];
+function px(lon){ return ((lon+180)*1.09).toFixed(1); }
+function py(lat){ return ((90-lat)*0.757).toFixed(1); }
+let map = '<svg width="398" height="113" viewBox="0 0 398 113">';
+for (const poly of LAND){
+  const pts = poly.map(p=>px(p[0])+','+py(p[1])).join(' ');
+  map += '<polygon points="'+pts+'" fill="#e2cf9f" stroke="#8a6d3b" stroke-width="1.1" stroke-linejoin="round"/>';
+}
+for (const lab of LABELS){
+  map += '<text x="'+lab[1]+'" y="'+lab[2]+'" font-size="8" font-weight="bold" letter-spacing="0.4" fill="#141414" stroke="#f6efdb" stroke-width="2.4" stroke-linejoin="round" style="paint-order:stroke" text-anchor="'+lab[3]+'">'+lab[0]+'</text>';
+}
+for (const pin of PINS){
+  map += '<circle cx="'+pin[1]+'" cy="'+pin[2]+'" r="7" fill="'+pin[3]+'" stroke="#fff" stroke-width="1.6"/>'
+       + '<text x="'+pin[1]+'" y="'+(pin[2]+3.4)+'" font-size="9.5" font-weight="bold" fill="#fff" text-anchor="middle">'+pin[0]+'</text>';
+}
+map += '</svg>';
+document.getElementById('worldmap').innerHTML = map;
+</script>
+</body>
+</html>

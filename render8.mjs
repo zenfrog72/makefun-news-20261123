@@ -1,0 +1,10 @@
+import puppeteer from 'puppeteer';
+const url = 'file:///home/hatch/workspace/makefun-news-20261123/draft8.html';
+const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
+const page = await browser.newPage();
+await page.setViewport({ width: 1024, height: 1024, deviceScaleFactor: 4 });
+await page.goto(url, { waitUntil: 'networkidle0' });
+await new Promise(r => setTimeout(r, 400));
+await page.screenshot({ path: '/home/hatch/workspace/makefun-news-20261123/draft8-4x.png' });
+await browser.close();
+console.log('shot ok');
